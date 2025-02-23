@@ -1,32 +1,7 @@
 function rot13(str) {
-  const rot = {
-    a: "n",
-    b: "o",
-    c: "p",
-    d: "q",
-    e: "r",
-    f: "s",
-    g: "t",
-    h: "u",
-    i: "v",
-    j: "w",
-    k: "x",
-    l: "y",
-    m: "z",
-    n: "a",
-    o: "b",
-    p: "c",
-    q: "d",
-    r: "e",
-    s: "f",
-    t: "g",
-    u: "h",
-    v: "i",
-    w: "j",
-    x: "k",
-    y: "l",
-    z: "m",
-  };
-  str.split("");
+  const a = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const b = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM";
+  return str.replace(/[a-z]/gi, (c) => a[b.indexOf(c)]);
 }
-console.log();
+
+console.log(rot13("This is my first ROT13 excercise!"));
