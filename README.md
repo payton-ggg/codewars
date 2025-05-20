@@ -20,6 +20,7 @@ Welcome to my Codewars Kata archive! This repository contains my solutions to va
 ├── 6kyu/
 │   ├── kata-name.js
 ├── ...
+├── init.js
 └── README.md
 ```
 
