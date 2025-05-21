@@ -1,11 +1,4 @@
 function validPhoneNumber(phoneNumber) {
-	return phoneNumber.split(" ").length === 2
-		? phoneNumber.split("-").length === 2
-			? isNaN(Number(phoneNumber[1]))
-				? false
-				: true
-			: false
-		: false;
+	const phoneRegex = /^\(\d{3}\) \d{3}-\d{4}$/;
+	return phoneRegex.test(phoneNumber);
 }
-
-console.log(validPhoneNumber("(123) 456-7890"));
