@@ -2,4 +2,4 @@ const toFileName = (name) => {
   return name.toLowerCase().replaceAll(" ", "_");
 };
 
-console.log(toFileName("extract the domain name from A url") + ".js");
+console.log(toFileName("Is this a valid Tic Tac Toe position") + ".js");
