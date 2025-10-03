@@ -1,27 +1,29 @@
 function convertQueryToMap(query) {
-  let arr = [];
+  if (!query || query.length === 0) return {};
 
-  query = query.split(".");
+  const result = {};
 
-  for (let i = 0; i < 3; i++) {
-    const el = query.find((str) => str.search("=") !== -1);
-    query.splice(query.indexOf(el), 1);
-    arr.push(el);
-  }
+  query.split("&").forEach((param) => {
+    let [key, value] = param.split("=");
+    value = decodeURIComponent(value);
 
-  arr = arr.map((el) => {
-    return el.split("=")[1].split("&")[0];
+    const parts = key.split(".");
+    let current = result;
+
+    for (let i = 0; i < parts.length; i++) {
+      const part = parts[i];
+      if (i === parts.length - 1) {
+        current[part] = value;
+      } else {
+        if (!current[part]) {
+          current[part] = {};
+        }
+        current = current[part];
+      }
+    }
   });
 
-  return (obj = {
-    user: {
-      name: {
-        firstname: arr[0],
-        lastname: arr[1],
-      },
-      favoritecolor: arr[2].split("%20").join(" "),
-    },
-  });
+  return result;
 }
 
 console.log(
